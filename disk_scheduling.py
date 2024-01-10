@@ -60,6 +60,10 @@ def CLOOK(requests, head, direction):
             distance += abs(working_requests[i]-head)
             head = working_requests[i]  # Update head position
 
+    # The jump to the end of opposite direction is not counted towards seek time
+    # So we subtract the max and min from the distance
+    distance -= max(seek_sequence) - min(seek_sequence)
+
     title = f'CLOOK with n={n}'
     print(f'\n{title}')
     print("Total number of seek operations = ", distance)
@@ -120,6 +124,10 @@ def CSCAN(requests, head, direction):
             # Difference between head and request position
             distance += abs(working_requests[i]-head)
             head = working_requests[i]  # Update head position
+
+    # The jump to the end of opposite direction is not counted towards seek time
+    # So we subtract the max and min from the distance
+    distance -= max(seek_sequence) - min(seek_sequence)
 
     title = f'CSCAN with n={n}'
     print(f'\n{title}')
