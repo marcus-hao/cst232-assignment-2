@@ -141,6 +141,8 @@ def SCAN(requests, head, direction):
     current_track = 0
     seek_sequence = []
 
+    n = len(requests)   # Initial number of requests
+
     # Create a copy of the requests list
     working_requests = requests.copy()
 
